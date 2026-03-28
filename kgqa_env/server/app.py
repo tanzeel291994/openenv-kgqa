@@ -240,3 +240,14 @@ def run_baseline():
         "note": "See baseline/inference.py for OpenAI API-powered baseline with higher scores",
         "results": results,
     }
+
+
+def main():
+    """Entry point for running the server directly."""
+    import uvicorn
+    port = int(os.environ.get("PORT", "7860"))
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+
+if __name__ == "__main__":
+    main()
