@@ -1,0 +1,9802 @@
+[
+  {
+    "id": "task3_instance_0",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the Cloud Infrastructure company headquartered in San Francisco make?",
+    "gold_answer": "PeakCloud",
+    "gold_answer_entity_id": "pr3",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_1",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Grace Patel works at headquartered?",
+    "gold_answer": "Seattle",
+    "gold_answer_entity_id": "loc3",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_2",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Carol Zhang works at headquartered?",
+    "gold_answer": "Austin",
+    "gold_answer_entity_id": "loc2",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_3",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Which university did the founder of DataFlow attend?",
+    "gold_answer": "Stanford University",
+    "gold_answer_entity_id": "u1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_4",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Who is the CEO of the company that acquired DataFlow?",
+    "gold_answer": "Alice Chen",
+    "gold_answer_entity_id": "p1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_5",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that makes BioAnalyzer headquartered?",
+    "gold_answer": "Austin",
+    "gold_answer_entity_id": "loc2",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_6",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Name someone who works at the company partnered with CloudPeak.",
+    "gold_answer": "Grace Patel",
+    "gold_answer_entity_id": "p7",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_7",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that makes FlowEngine headquartered?",
+    "gold_answer": "Austin",
+    "gold_answer_entity_id": "loc2",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_8",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the Quantum Computing company headquartered in Seattle make?",
+    "gold_answer": "QuantumSDK",
+    "gold_answer_entity_id": "pr4",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_9",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that makes PeakCloud headquartered?",
+    "gold_answer": "San Francisco",
+    "gold_answer_entity_id": "loc1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_10",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the AI company headquartered in San Francisco make?",
+    "gold_answer": "NovaDB",
+    "gold_answer_entity_id": "pr1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_11",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that makes NovaDB headquartered?",
+    "gold_answer": "San Francisco",
+    "gold_answer_entity_id": "loc1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_12",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the company that acquired the company founded by David Kim make?",
+    "gold_answer": "NovaDB",
+    "gold_answer_entity_id": "pr1",
+    "hop_count": 3,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_13",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Bob Rao works at headquartered?",
+    "gold_answer": "San Francisco",
+    "gold_answer_entity_id": "loc1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_14",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the Biotech company headquartered in Austin make?",
+    "gold_answer": "BioAnalyzer",
+    "gold_answer_entity_id": "pr5",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_15",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Which university did the CEO of the company that invested in BioSynth attend?",
+    "gold_answer": "UC Berkeley",
+    "gold_answer_entity_id": "u3",
+    "hop_count": 3,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_16",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that makes QuantumSDK headquartered?",
+    "gold_answer": "Seattle",
+    "gold_answer_entity_id": "loc3",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_17",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the Data Analytics company headquartered in Austin make?",
+    "gold_answer": "FlowEngine",
+    "gold_answer_entity_id": "pr2",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_18",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Elena Ruiz works at headquartered?",
+    "gold_answer": "San Francisco",
+    "gold_answer_entity_id": "loc1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_19",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Which university did the CEO of NovaTech attend?",
+    "gold_answer": "Stanford University",
+    "gold_answer_entity_id": "u1",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_20",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Henry Okafor works at headquartered?",
+    "gold_answer": "Austin",
+    "gold_answer_entity_id": "loc2",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_21",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Which university did the CEO of QuantumLeap attend?",
+    "gold_answer": "UC Berkeley",
+    "gold_answer_entity_id": "u3",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_22",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "What product does the Cloud Infrastructure company headquartered in San Francisco make?",
+    "gold_answer": "PeakCloud",
+    "gold_answer_entity_id": "pr3",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_23",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Grace Patel works at headquartered?",
+    "gold_answer": "Seattle",
+    "gold_answer_entity_id": "loc3",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  },
+  {
+    "id": "task3_instance_24",
+    "task_type": "multi_hop_qa",
+    "description": "Answer the question by exploring the knowledge graph. Use get_entity and get_neighbors to traverse relationships.",
+    "text": "",
+    "question": "Where is the company that Carol Zhang works at headquartered?",
+    "gold_answer": "Austin",
+    "gold_answer_entity_id": "loc2",
+    "hop_count": 2,
+    "entities": [
+      {
+        "id": "c1",
+        "type": "Company",
+        "properties": {
+          "name": "NovaTech",
+          "founded": 2015,
+          "industry": "AI"
+        }
+      },
+      {
+        "id": "c2",
+        "type": "Company",
+        "properties": {
+          "name": "DataFlow",
+          "founded": 2018,
+          "industry": "Data Analytics"
+        }
+      },
+      {
+        "id": "c3",
+        "type": "Company",
+        "properties": {
+          "name": "CloudPeak",
+          "founded": 2012,
+          "industry": "Cloud Infrastructure"
+        }
+      },
+      {
+        "id": "c4",
+        "type": "Company",
+        "properties": {
+          "name": "QuantumLeap",
+          "founded": 2020,
+          "industry": "Quantum Computing"
+        }
+      },
+      {
+        "id": "c5",
+        "type": "Company",
+        "properties": {
+          "name": "BioSynth",
+          "founded": 2016,
+          "industry": "Biotech"
+        }
+      },
+      {
+        "id": "p1",
+        "type": "Person",
+        "properties": {
+          "name": "Alice Chen",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p2",
+        "type": "Person",
+        "properties": {
+          "name": "Bob Rao",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p3",
+        "type": "Person",
+        "properties": {
+          "name": "Carol Zhang",
+          "role": "VP Engineering"
+        }
+      },
+      {
+        "id": "p4",
+        "type": "Person",
+        "properties": {
+          "name": "David Kim",
+          "role": "Founder"
+        }
+      },
+      {
+        "id": "p5",
+        "type": "Person",
+        "properties": {
+          "name": "Elena Ruiz",
+          "role": "Lead Scientist"
+        }
+      },
+      {
+        "id": "p6",
+        "type": "Person",
+        "properties": {
+          "name": "Frank Liu",
+          "role": "CEO"
+        }
+      },
+      {
+        "id": "p7",
+        "type": "Person",
+        "properties": {
+          "name": "Grace Patel",
+          "role": "CTO"
+        }
+      },
+      {
+        "id": "p8",
+        "type": "Person",
+        "properties": {
+          "name": "Henry Okafor",
+          "role": "Research Director"
+        }
+      },
+      {
+        "id": "pr1",
+        "type": "Product",
+        "properties": {
+          "name": "NovaDB",
+          "category": "Database"
+        }
+      },
+      {
+        "id": "pr2",
+        "type": "Product",
+        "properties": {
+          "name": "FlowEngine",
+          "category": "ETL Pipeline"
+        }
+      },
+      {
+        "id": "pr3",
+        "type": "Product",
+        "properties": {
+          "name": "PeakCloud",
+          "category": "Cloud Platform"
+        }
+      },
+      {
+        "id": "pr4",
+        "type": "Product",
+        "properties": {
+          "name": "QuantumSDK",
+          "category": "Development Kit"
+        }
+      },
+      {
+        "id": "pr5",
+        "type": "Product",
+        "properties": {
+          "name": "BioAnalyzer",
+          "category": "Analysis Tool"
+        }
+      },
+      {
+        "id": "loc1",
+        "type": "Location",
+        "properties": {
+          "name": "San Francisco",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc2",
+        "type": "Location",
+        "properties": {
+          "name": "Austin",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "loc3",
+        "type": "Location",
+        "properties": {
+          "name": "Seattle",
+          "country": "USA"
+        }
+      },
+      {
+        "id": "u1",
+        "type": "University",
+        "properties": {
+          "name": "Stanford University"
+        }
+      },
+      {
+        "id": "u2",
+        "type": "University",
+        "properties": {
+          "name": "MIT"
+        }
+      },
+      {
+        "id": "u3",
+        "type": "University",
+        "properties": {
+          "name": "UC Berkeley"
+        }
+      }
+    ],
+    "initial_triples": [
+      [
+        "p1",
+        "ceo_of",
+        "c1"
+      ],
+      [
+        "p6",
+        "ceo_of",
+        "c4"
+      ],
+      [
+        "p4",
+        "founded_by",
+        "c2"
+      ],
+      [
+        "p2",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p3",
+        "works_at",
+        "c2"
+      ],
+      [
+        "p5",
+        "works_at",
+        "c1"
+      ],
+      [
+        "p7",
+        "works_at",
+        "c4"
+      ],
+      [
+        "p8",
+        "works_at",
+        "c5"
+      ],
+      [
+        "c1",
+        "makes_product",
+        "pr1"
+      ],
+      [
+        "c2",
+        "makes_product",
+        "pr2"
+      ],
+      [
+        "c3",
+        "makes_product",
+        "pr3"
+      ],
+      [
+        "c4",
+        "makes_product",
+        "pr4"
+      ],
+      [
+        "c5",
+        "makes_product",
+        "pr5"
+      ],
+      [
+        "c1",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c2",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c3",
+        "headquartered_in",
+        "loc1"
+      ],
+      [
+        "c4",
+        "headquartered_in",
+        "loc3"
+      ],
+      [
+        "c5",
+        "headquartered_in",
+        "loc2"
+      ],
+      [
+        "c1",
+        "acquired",
+        "c2"
+      ],
+      [
+        "c3",
+        "invested_in",
+        "c1"
+      ],
+      [
+        "c1",
+        "partner_of",
+        "c3"
+      ],
+      [
+        "c4",
+        "invested_in",
+        "c5"
+      ],
+      [
+        "c3",
+        "partner_of",
+        "c4"
+      ],
+      [
+        "p1",
+        "attended",
+        "u1"
+      ],
+      [
+        "p2",
+        "attended",
+        "u2"
+      ],
+      [
+        "p4",
+        "attended",
+        "u1"
+      ],
+      [
+        "p6",
+        "attended",
+        "u3"
+      ],
+      [
+        "p7",
+        "attended",
+        "u2"
+      ],
+      [
+        "p8",
+        "attended",
+        "u3"
+      ],
+      [
+        "p1",
+        "born_in",
+        "loc1"
+      ],
+      [
+        "p5",
+        "born_in",
+        "loc2"
+      ],
+      [
+        "p6",
+        "born_in",
+        "loc3"
+      ]
+    ],
+    "gold_triples": [],
+    "schema": {
+      "entity_types": [
+        "Company",
+        "Person",
+        "Product",
+        "Location",
+        "University"
+      ],
+      "relation_types": [
+        "ceo_of",
+        "works_at",
+        "founded_by",
+        "makes_product",
+        "headquartered_in",
+        "located_in",
+        "acquired",
+        "invested_in",
+        "attended",
+        "born_in",
+        "has_revenue",
+        "partner_of"
+      ]
+    }
+  }
+]
