@@ -2,10 +2,10 @@
 Inference Script for KGQA Environment
 ===================================
 MANDATORY Environment Variables:
-    API_BASE_URL   The API endpoint for the LLM (default: https://router.huggingface.co/v1)
-    MODEL_NAME     The model identifier (default: Qwen/Qwen2.5-72B-Instruct)
-    HF_TOKEN       Your Hugging Face / API key
-    IMAGE_NAME     Docker image name (if using from_docker_image)
+    API_BASE_URL       The API endpoint for the LLM (default: https://router.huggingface.co/v1)
+    MODEL_NAME         The model identifier (default: Qwen/Qwen2.5-72B-Instruct)
+    HF_TOKEN           Your Hugging Face / API key
+    LOCAL_IMAGE_NAME   Docker image name (optional, if using from_docker_image)
 
 STDOUT FORMAT:
     [START] task=<task_name> env=kgqa model=<model_name>
@@ -28,10 +28,10 @@ from client import KGQAEnv
 # Configuration
 # ---------------------------------------------------------------------------
 
-IMAGE_NAME = os.getenv("IMAGE_NAME")
-API_KEY = os.getenv("HF_TOKEN") or os.getenv("API_KEY")
-API_BASE_URL = os.getenv("API_BASE_URL") or "https://router.huggingface.co/v1"
-MODEL_NAME = os.getenv("MODEL_NAME") or "Qwen/Qwen2.5-72B-Instruct"
+LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")
+HF_TOKEN = os.getenv("HF_TOKEN")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
+MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-72B-Instruct")
 TASK_NAME = os.getenv("KGQA_TASK", "triple_completion")
 BENCHMARK = "kgqa"
 MAX_STEPS = 25
@@ -133,11 +133,11 @@ def get_llm_tool_call(
 # ---------------------------------------------------------------------------
 
 async def main() -> None:
-    llm = OpenAI(base_url=API_BASE_URL, api_key=API_KEY)
+    llm = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
 
     # Connect to environment
-    if IMAGE_NAME:
-        env = await KGQAEnv.from_docker_image(IMAGE_NAME)
+    if LOCAL_IMAGE_NAME:
+        env = await KGQAEnv.from_docker_image(LOCAL_IMAGE_NAME)
     else:
         env = KGQAEnv(base_url=os.getenv(
             "KGQA_SERVER_URL",
