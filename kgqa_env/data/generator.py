@@ -486,6 +486,110 @@ def _build_question_templates(gold: dict) -> list[dict]:
                     "hop_count": 2,
                 })
 
+    # --- Harder questions (3-4 hops, require careful traversal) ---
+
+    # Template 11 (3-hop): "Where is the company that the person born in {location} is CEO of headquartered?"
+    # born_in → person → ceo_of → company → headquartered_in → location
+    for person_id in ["p1", "p6"]:
+        birth_loc = sp_to_o.get((person_id, "born_in"))
+        company_id = sp_to_o.get((person_id, "ceo_of"))
+        if birth_loc and company_id:
+            hq_loc = sp_to_o.get((company_id, "headquartered_in"))
+            if hq_loc and hq_loc != birth_loc:
+                questions.append({
+                    "question": (
+                        f"Where is the company headquartered whose CEO was born in {names[birth_loc]}?"
+                    ),
+                    "gold_answer": names[hq_loc],
+                    "gold_answer_entity_id": hq_loc,
+                    "hop_count": 3,
+                })
+
+    # Template 12 (3-hop): "What product does the company that {person}'s employer acquired make?"
+    # person → works_at → company → acquired → company2 → makes_product → product
+    for person_id in ["p2", "p5"]:
+        employer = sp_to_o.get((person_id, "works_at"))
+        if employer:
+            for s2, p2, o2 in gold["triples"]:
+                if p2 == "acquired" and s2 == employer:
+                    acquired_co = o2
+                    prod = sp_to_o.get((acquired_co, "makes_product"))
+                    if prod:
+                        questions.append({
+                            "question": (
+                                f"What product does the company that "
+                                f"{names[person_id]}'s employer acquired make?"
+                            ),
+                            "gold_answer": names[prod],
+                            "gold_answer_entity_id": prod,
+                            "hop_count": 3,
+                        })
+
+    # Template 13 (3-hop): "Which university did someone who works at the company in {location} that does {industry} attend?"
+    # location → headquartered_in (reverse) → company → works_at (reverse) → person → attended → uni
+    for company in gold["entities"]:
+        if company["type"] != "Company":
+            continue
+        cid = company["id"]
+        loc_id = sp_to_o.get((cid, "headquartered_in"))
+        industry = company["properties"].get("industry", "")
+        if loc_id:
+            workers = po_to_s.get(("works_at", cid), [])
+            for w in workers:
+                uni = sp_to_o.get((w, "attended"))
+                if uni:
+                    questions.append({
+                        "question": (
+                            f"Which university did someone who works at the "
+                            f"{industry} company in {names[loc_id]} attend?"
+                        ),
+                        "gold_answer": names[uni],
+                        "gold_answer_entity_id": uni,
+                        "hop_count": 3,
+                    })
+
+    # Template 14 (4-hop): "Where was the CEO of the company that invested in the company making {product} born?"
+    for s, p, o in gold["triples"]:
+        if p == "makes_product":
+            maker = s
+            product_id = o
+            for s2, p2, o2 in gold["triples"]:
+                if p2 == "invested_in" and o2 == maker:
+                    investor = s2
+                    ceos = po_to_s.get(("ceo_of", investor), [])
+                    for ceo_id in ceos:
+                        birth = sp_to_o.get((ceo_id, "born_in"))
+                        if birth:
+                            questions.append({
+                                "question": (
+                                    f"Where was the CEO of the company that invested "
+                                    f"in the company making {names[product_id]} born?"
+                                ),
+                                "gold_answer": names[birth],
+                                "gold_answer_entity_id": birth,
+                                "hop_count": 4,
+                            })
+
+    # Template 15 (ambiguous): "Name all companies headquartered in {location}" — multiple answers
+    # This is tricky because the agent must find ALL, not just one
+    for loc in gold["entities"]:
+        if loc["type"] != "Location":
+            continue
+        lid = loc["id"]
+        companies_here = po_to_s.get(("headquartered_in", lid), [])
+        if len(companies_here) >= 2:
+            # Just ask for one — but there are distractors
+            for cid in companies_here:
+                questions.append({
+                    "question": (
+                        f"Name a company headquartered in {names[lid]} "
+                        f"that is NOT {names[companies_here[0] if cid != companies_here[0] else companies_here[1]]}."
+                    ),
+                    "gold_answer": names[cid],
+                    "gold_answer_entity_id": cid,
+                    "hop_count": 2,
+                })
+
     return questions
 
 

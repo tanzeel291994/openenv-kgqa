@@ -3,6 +3,7 @@ FROM python:3.12-slim
 WORKDIR /app/env
 
 # Install dependencies
+COPY pyproject.toml .
 RUN pip install --no-cache-dir \
     "openenv-core[core]>=0.2.1" \
     "fastapi>=0.115.0" \
