@@ -2,10 +2,10 @@
 Inference Script for KGQA Environment
 ===================================
 MANDATORY Environment Variables:
-    API_BASE_URL   The API endpoint for the LLM (default: https://router.huggingface.co/v1)
-    MODEL_NAME     The model identifier (default: Qwen/Qwen2.5-72B-Instruct)
-    HF_TOKEN       Your Hugging Face / API key
-    IMAGE_NAME     Docker image name (if using from_docker_image)
+    API_BASE_URL       The API endpoint for the LLM (default: https://router.huggingface.co/v1)
+    MODEL_NAME         The model identifier (default: Qwen/Qwen2.5-72B-Instruct)
+    HF_TOKEN           Your Hugging Face / API key
+    LOCAL_IMAGE_NAME   Docker image name (optional, if using from_docker_image)
 
 STDOUT FORMAT:
     [START] task=<task_name> env=kgqa model=<model_name>
@@ -28,11 +28,11 @@ from client import KGQAEnv
 # Configuration
 # ---------------------------------------------------------------------------
 
-IMAGE_NAME = os.getenv("IMAGE_NAME")
-API_KEY = os.getenv("HF_TOKEN") or os.getenv("API_KEY")
-API_BASE_URL = os.getenv("API_BASE_URL") or "https://router.huggingface.co/v1"
-MODEL_NAME = os.getenv("MODEL_NAME") or "Qwen/Qwen2.5-72B-Instruct"
-TASK_NAME = os.getenv("KGQA_TASK", "triple_completion")
+LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")
+HF_TOKEN = os.getenv("HF_TOKEN")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
+MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-72B-Instruct")
+ALL_TASKS = ["triple_completion", "inconsistency_repair", "multi_hop_qa"]
 BENCHMARK = "kgqa"
 MAX_STEPS = 25
 TEMPERATURE = 0.2
@@ -132,29 +132,18 @@ def get_llm_tool_call(
 # Main
 # ---------------------------------------------------------------------------
 
-async def main() -> None:
-    llm = OpenAI(base_url=API_BASE_URL, api_key=API_KEY)
-
-    # Connect to environment
-    if IMAGE_NAME:
-        env = await KGQAEnv.from_docker_image(IMAGE_NAME)
-    else:
-        env = KGQAEnv(base_url=os.getenv(
-            "KGQA_SERVER_URL",
-            "https://tan291994-openenv-kgqa.hf.space",
-        ))
-        await env.connect()
-
+async def run_episode(env: KGQAEnv, llm: OpenAI, task_name: str) -> None:
+    """Run one episode for a single task, emitting [START]/[STEP]/[END] logs."""
     rewards: List[float] = []
     steps_taken = 0
     score = 0.0
     success = False
 
-    log_start(task=TASK_NAME, env=BENCHMARK, model=MODEL_NAME)
+    log_start(task=task_name, env=BENCHMARK, model=MODEL_NAME)
 
     try:
         # Reset environment
-        reset_result = await env.reset(task_type=TASK_NAME)
+        reset_result = await env.reset(task_type=task_name)
         obs = reset_result.observation
         obs_meta = getattr(obs, "metadata", {}) or {}
 
@@ -162,7 +151,7 @@ async def main() -> None:
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": (
-                f"Episode started. Task type: {TASK_NAME}\n"
+                f"Episode started. Task type: {task_name}\n"
                 f"Observation: {json.dumps(obs_meta)}\n\n"
                 f"Start by calling get_task_info to understand the task."
             )},
@@ -179,7 +168,6 @@ async def main() -> None:
                 raw_text, tool_call = get_llm_tool_call(llm, messages)
                 messages.append({"role": "assistant", "content": raw_text})
             except (json.JSONDecodeError, KeyError) as e:
-                # LLM returned invalid JSON — log and retry
                 action_str = f"parse_error({e})"
                 log_step(step=step, action=action_str, reward=0.0, done=False, error=str(e))
                 rewards.append(0.0)
@@ -196,18 +184,13 @@ async def main() -> None:
             tool_name = tool_call["tool_name"]
             arguments = tool_call["arguments"]
 
-            # Execute tool call
-            action = CallToolAction(
-                tool_name=tool_name,
-                arguments=arguments,
-            )
+            action = CallToolAction(tool_name=tool_name, arguments=arguments)
             result = await env.step(action)
 
             reward = result.reward or 0.0
             done = result.done
             error_msg = None
 
-            # Check for tool errors
             obs = result.observation
             if hasattr(obs, "error") and obs.error:
                 error_msg = str(obs.error)
@@ -215,7 +198,6 @@ async def main() -> None:
             rewards.append(reward)
             steps_taken = step
 
-            # Format action for logging
             action_str = f"{tool_name}({json.dumps(arguments)})" if arguments else f"{tool_name}()"
             log_step(step=step, action=action_str, reward=reward, done=done, error=error_msg)
 
@@ -246,9 +228,9 @@ async def main() -> None:
                 ),
             })
 
-        # Force submit if agent ran out of steps without submitting
+        # Force submit if agent ran out of steps
         if not done:
-            if TASK_NAME == "multi_hop_qa":
+            if task_name == "multi_hop_qa":
                 action = CallToolAction(tool_name="submit_text_answer", arguments={"answer": "unknown"})
             else:
                 action = CallToolAction(tool_name="submit_answer", arguments={})
@@ -258,17 +240,35 @@ async def main() -> None:
             steps_taken += 1
             log_step(step=steps_taken, action="submit_answer()", reward=reward, done=True, error=None)
 
-        # Score = final reward from submit (already in [0, 1])
-        score = max(rewards) if rewards else 0.0
-        score = min(max(score, 0.0), 1.0)
-        success = score > 0.0
+        score = max(rewards) if rewards else 0.01
+        score = min(max(score, 0.01), 0.99)  # clamp to (0, 1) exclusive
+        success = score > 0.01
 
+    finally:
+        log_end(success=success, steps=steps_taken, score=score, rewards=rewards)
+
+
+async def main() -> None:
+    llm = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
+
+    # Connect to environment
+    if LOCAL_IMAGE_NAME:
+        env = await KGQAEnv.from_docker_image(LOCAL_IMAGE_NAME)
+    else:
+        env = KGQAEnv(base_url=os.getenv(
+            "KGQA_SERVER_URL",
+            "https://tan291994-openenv-kgqa.hf.space",
+        ))
+        await env.connect()
+
+    try:
+        for task_name in ALL_TASKS:
+            await run_episode(env, llm, task_name)
     finally:
         try:
             await env.close()
         except Exception as e:
             print(f"[DEBUG] env.close() error: {e}", flush=True)
-        log_end(success=success, steps=steps_taken, score=score, rewards=rewards)
 
 
 if __name__ == "__main__":

@@ -12,6 +12,14 @@ gradient signal even from strong models.
 
 from __future__ import annotations
 
+# Clamp rewards to open interval (0, 1) — required by OpenEnv grading spec
+_EPS = 0.01
+
+
+def _clamp(score: float) -> float:
+    """Clamp to (_EPS, 1 - _EPS) so scores are never exactly 0.0 or 1.0."""
+    return max(_EPS, min(1.0 - _EPS, score))
+
 
 def compute_triple_completion_reward(
     agent_triples: list[tuple[str, str, str]],
@@ -58,7 +66,7 @@ def compute_triple_completion_reward(
     recall = correct / len(gold_set) if gold_set else 0.0
 
     # Weighted combination
-    reward = recall * 0.7 + precision * 0.3
+    reward = _clamp(recall * 0.7 + precision * 0.3)
 
     return {
         "reward": round(reward, 4),
@@ -106,7 +114,7 @@ def compute_inconsistency_repair_reward(
     replacement_recall = correctly_replaced / len(replacement_set) if replacement_set else 0.0
     replacement_score = replacement_recall * 0.7 + replacement_precision * 0.3
 
-    reward = removal_score * 0.6 + replacement_score * 0.4
+    reward = _clamp(removal_score * 0.6 + replacement_score * 0.4)
 
     return {
         "reward": round(reward, 4),
@@ -148,17 +156,17 @@ def compute_multi_hop_qa_reward(
 
     # 1. Exact match
     if agent_clean == gold_clean:
-        return {"reward": 1.0, "match_type": "exact",
+        return {"reward": _clamp(1.0), "match_type": "exact",
                 "gold_answer": gold_answer, "agent_answer": agent_answer}
 
     # 2. Entity ID match
     if agent_clean == gold_answer_entity_id.strip().lower():
-        return {"reward": 1.0, "match_type": "entity_id",
+        return {"reward": _clamp(1.0), "match_type": "entity_id",
                 "gold_answer": gold_answer, "agent_answer": agent_answer}
 
     # 3. Substring containment
     if gold_clean in agent_clean or agent_clean in gold_clean:
-        return {"reward": 0.8, "match_type": "substring",
+        return {"reward": _clamp(0.8), "match_type": "substring",
                 "gold_answer": gold_answer, "agent_answer": agent_answer}
 
     # 4. Token overlap (Jaccard similarity)
@@ -169,10 +177,10 @@ def compute_multi_hop_qa_reward(
         union = len(agent_tokens | gold_tokens)
         jaccard = intersection / union
         if jaccard > 0:
-            reward = round(0.3 + 0.4 * jaccard, 4)
-            return {"reward": reward, "match_type": "partial",
+            reward = _clamp(0.3 + 0.4 * jaccard)
+            return {"reward": round(reward, 4), "match_type": "partial",
                     "gold_answer": gold_answer, "agent_answer": agent_answer}
 
     # 5. No match
-    return {"reward": 0.0, "match_type": "none",
+    return {"reward": _clamp(0.0), "match_type": "none",
             "gold_answer": gold_answer, "agent_answer": agent_answer}
