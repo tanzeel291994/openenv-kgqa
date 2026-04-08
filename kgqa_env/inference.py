@@ -132,27 +132,40 @@ def get_llm_tool_call(
 # Main
 # ---------------------------------------------------------------------------
 
-async def run_episode(env: KGQAEnv, llm: OpenAI, task_name: str) -> None:
-    """Run one episode for a single task, emitting [START]/[STEP]/[END] logs."""
+SERVER_URL = os.getenv("KGQA_SERVER_URL", "https://tan291994-openenv-kgqa.hf.space")
+
+
+async def make_env() -> KGQAEnv:
+    """Create a fresh connected env for each episode."""
+    if LOCAL_IMAGE_NAME:
+        return await KGQAEnv.from_docker_image(LOCAL_IMAGE_NAME)
+    env = KGQAEnv(base_url=SERVER_URL)
+    await env.connect()
+    return env
+
+
+async def run_episode(llm: OpenAI, task_name: str) -> None:
+    """Run one episode with a fresh env connection. Always emits [START]/[STEP]/[END]."""
     rewards: List[float] = []
     steps_taken = 0
-    score = 0.0
+    score = 0.01
     success = False
 
     log_start(task=task_name, env=BENCHMARK, model=MODEL_NAME)
 
+    env = None
     try:
-        # Reset environment
+        env = await make_env()
+
         reset_result = await env.reset(task_type=task_name)
         obs = reset_result.observation
         obs_meta = getattr(obs, "metadata", {}) or {}
 
-        # Build initial context for LLM
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": (
                 f"Episode started. Task type: {task_name}\n"
-                f"Observation: {json.dumps(obs_meta)}\n\n"
+                f"Observation: {json.dumps(obs_meta, default=str)}\n\n"
                 f"Start by calling get_task_info to understand the task."
             )},
         ]
@@ -167,15 +180,15 @@ async def run_episode(env: KGQAEnv, llm: OpenAI, task_name: str) -> None:
             try:
                 raw_text, tool_call = get_llm_tool_call(llm, messages)
                 messages.append({"role": "assistant", "content": raw_text})
-            except (json.JSONDecodeError, KeyError) as e:
-                action_str = f"parse_error({e})"
-                log_step(step=step, action=action_str, reward=0.0, done=False, error=str(e))
+            except Exception as e:
+                err = str(e)[:120]
+                log_step(step=step, action="parse_error", reward=0.0, done=False, error=err)
                 rewards.append(0.0)
                 steps_taken = step
                 messages.append({
                     "role": "user",
                     "content": (
-                        f"Error parsing your response: {e}. "
+                        f"Error: {err}. "
                         f'Respond with ONLY: {{"tool_name": "...", "arguments": {{...}}}}'
                     ),
                 })
@@ -184,20 +197,22 @@ async def run_episode(env: KGQAEnv, llm: OpenAI, task_name: str) -> None:
             tool_name = tool_call["tool_name"]
             arguments = tool_call["arguments"]
 
-            action = CallToolAction(tool_name=tool_name, arguments=arguments)
-            result = await env.step(action)
-
-            reward = result.reward or 0.0
-            done = result.done
-            error_msg = None
-
-            obs = result.observation
-            if hasattr(obs, "error") and obs.error:
-                error_msg = str(obs.error)
+            try:
+                action = CallToolAction(tool_name=tool_name, arguments=arguments)
+                result = await env.step(action)
+                reward = result.reward or 0.0
+                done = result.done
+                error_msg = None
+                obs = result.observation
+                if hasattr(obs, "error") and obs.error:
+                    error_msg = str(obs.error)
+            except Exception as e:
+                reward = 0.0
+                done = False
+                error_msg = str(e)[:120]
 
             rewards.append(reward)
             steps_taken = step
-
             action_str = f"{tool_name}({json.dumps(arguments)})" if arguments else f"{tool_name}()"
             log_step(step=step, action=action_str, reward=reward, done=done, error=error_msg)
 
@@ -205,11 +220,14 @@ async def run_episode(env: KGQAEnv, llm: OpenAI, task_name: str) -> None:
                 break
 
             # Feed observation back to LLM
-            obs_data = {}
-            if hasattr(obs, "result"):
-                obs_data = obs.result if isinstance(obs.result, dict) else {"result": obs.result}
-            elif hasattr(obs, "metadata"):
-                obs_data = obs.metadata or {}
+            obs_data: Any = {}
+            try:
+                if hasattr(obs, "result"):
+                    obs_data = obs.result if isinstance(obs.result, dict) else {"result": str(obs.result)}
+                elif hasattr(obs, "metadata"):
+                    obs_data = obs.metadata or {}
+            except Exception:
+                obs_data = {}
 
             remaining = MAX_STEPS - step
             urgency = ""
@@ -230,45 +248,40 @@ async def run_episode(env: KGQAEnv, llm: OpenAI, task_name: str) -> None:
 
         # Force submit if agent ran out of steps
         if not done:
-            if task_name == "multi_hop_qa":
-                action = CallToolAction(tool_name="submit_text_answer", arguments={"answer": "unknown"})
-            else:
-                action = CallToolAction(tool_name="submit_answer", arguments={})
-            result = await env.step(action)
-            reward = result.reward or 0.0
-            rewards.append(reward)
-            steps_taken += 1
-            log_step(step=steps_taken, action="submit_answer()", reward=reward, done=True, error=None)
+            try:
+                submit_tool = "submit_text_answer" if task_name == "multi_hop_qa" else "submit_answer"
+                submit_args = {"answer": "unknown"} if task_name == "multi_hop_qa" else {}
+                action = CallToolAction(tool_name=submit_tool, arguments=submit_args)
+                result = await env.step(action)
+                reward = result.reward or 0.0
+                rewards.append(reward)
+                steps_taken += 1
+                log_step(step=steps_taken, action=f"{submit_tool}()", reward=reward, done=True, error=None)
+            except Exception as e:
+                print(f"[DEBUG] force-submit error: {e}", flush=True)
 
         score = max(rewards) if rewards else 0.01
-        score = min(max(score, 0.01), 0.99)  # clamp to (0, 1) exclusive
+        score = min(max(score, 0.01), 0.99)
         success = score > 0.01
 
+    except Exception as e:
+        print(f"[DEBUG] run_episode({task_name}) error: {e}", flush=True)
+        score = 0.01
+        success = False
+
     finally:
-        log_end(success=success, steps=steps_taken, score=score, rewards=rewards)
+        if env is not None:
+            try:
+                await env.close()
+            except Exception:
+                pass
+        log_end(success=success, steps=steps_taken, score=score, rewards=rewards if rewards else [0.01])
 
 
 async def main() -> None:
     llm = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
-
-    # Connect to environment
-    if LOCAL_IMAGE_NAME:
-        env = await KGQAEnv.from_docker_image(LOCAL_IMAGE_NAME)
-    else:
-        env = KGQAEnv(base_url=os.getenv(
-            "KGQA_SERVER_URL",
-            "https://tan291994-openenv-kgqa.hf.space",
-        ))
-        await env.connect()
-
-    try:
-        for task_name in ALL_TASKS:
-            await run_episode(env, llm, task_name)
-    finally:
-        try:
-            await env.close()
-        except Exception as e:
-            print(f"[DEBUG] env.close() error: {e}", flush=True)
+    for task_name in ALL_TASKS:
+        await run_episode(llm, task_name)
 
 
 if __name__ == "__main__":
